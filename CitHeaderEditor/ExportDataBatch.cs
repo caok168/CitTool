@@ -250,11 +250,11 @@ namespace CitHeaderEditor
                     //使用中文名称
                     if (ckb_Chinese.Checked)
                     {
-                        ExportDataTxt(true, citSourceCheckFileNameList[j]);
+                        ExportDataTxt(true, citSourceCheckFileNameList[j],citSourceCheckFileList[j]);
                     }
                     else
                     {
-                        ExportDataTxt(false, citSourceCheckFileNameList[j]);
+                        ExportDataTxt(false, citSourceCheckFileNameList[j], citSourceCheckFileList[j]);
                     }
                 }
 
@@ -316,13 +316,15 @@ namespace CitHeaderEditor
         /// </summary>
         /// <param name="isChinese"></param>
         /// <param name="filePathStr"></param>
-        private void ExportDataTxt(bool isChinese, string filePathStr)
+        private void ExportDataTxt(bool isChinese, string filePathStr,string folderPath)
         {
 
             //string fileName = filePathStr.Substring(filePathStr.LastIndexOf("\\"));
             //string path = Application.StartupPath + fileName.Substring(0, fileName.Length - 4) + ".txt";
 
-            string path = Application.StartupPath + "\\" + filePathStr + ".txt";
+            //改变路径放到cit文件的路径下面
+            //string path = Application.StartupPath + "\\" + filePathStr + ".txt";
+            string path = folderPath.Substring(0, folderPath.LastIndexOf("\\")) + "\\" + filePathStr + ".txt";
             //if (this.txtStartMile.Text.Trim() != "" && this.txtEndMile.Text.Trim() != "")
             //{
             //    path += "-" + this.txtStartMile.Text.Trim() + "~" + this.txtEndMile.Text.Trim();
