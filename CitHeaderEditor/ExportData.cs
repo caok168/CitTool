@@ -61,8 +61,17 @@ namespace CitHeaderEditor
                 for (int i = 0; i < channelNameList.Count; i++)
                 {
                     CitFileHelper citHelper = new CitFileHelper();
-                    double[] d = citHelper.GetSingleChannelData(filePathStr, citHelper.GetChannelId(channelNameList[i].sNameEn, filePathStr));
-                    dataList.Add(d);
+
+                    if (channelNameList[i].sNameEn == "sample")
+                    {
+                        double[] d = citHelper.GetSingleChannelDataNoConvert(filePathStr, 2);
+                        dataList.Add(d);
+                    }
+                    else
+                    {
+                        double[] d = citHelper.GetSingleChannelData(filePathStr, citHelper.GetChannelId(channelNameList[i].sNameEn, filePathStr));
+                        dataList.Add(d);
+                    }
                 }
 
                 //使用中文名称
@@ -130,6 +139,14 @@ namespace CitHeaderEditor
         {
 
             listView1.BeginUpdate();
+
+            listView1.Items.Add("sample");
+            listView1.Items[listView1.Items.Count - 1].SubItems.Add("");
+            listView1.Items[listView1.Items.Count - 1].SubItems.Add("");
+            listView1.Items[listView1.Items.Count - 1].SubItems.Add("");
+            listView1.Items[listView1.Items.Count - 1].SubItems.Add("");
+            Application.DoEvents();
+
             foreach (DataChannelInfo item in channelList)
             {
                 listView1.Items.Add(item.sNameEn);
