@@ -143,7 +143,7 @@ namespace CitHeaderEditor
                 {
                     String citFilePath = null;
                     String citFileNameForTxt = null;
-                    citFileNameForTxt = "TrackGeometry-" + listViewFile.CheckedItems[i].SubItems[6].Text + "-" + listViewFile.CheckedItems[i].SubItems[0].Text + "-";
+                    citFileNameForTxt = "TrackGeometry-" + listViewFile.CheckedItems[i].SubItems[6].Text + "-" + listViewFile.CheckedItems[i].SubItems[0].Text.Replace("\0","") + "-";
                     if (listViewFile.CheckedItems[i].SubItems[2].Text == "上")
                     {
                         citFileNameForTxt += "SX";
