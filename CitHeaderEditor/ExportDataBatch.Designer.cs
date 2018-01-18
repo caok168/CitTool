@@ -43,6 +43,7 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckb_All_CitFiles = new System.Windows.Forms.CheckBox();
             this.pictureBoxMaxin50M = new System.Windows.Forms.PictureBox();
             this.pictureBoxCalcRMS = new System.Windows.Forms.PictureBox();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -54,12 +55,12 @@
             this.btn_Export = new System.Windows.Forms.Button();
             this.ckb_Chinese = new System.Windows.Forms.CheckBox();
             this.ckb_all_channel = new System.Windows.Forms.CheckBox();
-            this.ckb_All_CitFiles = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtStartMile = new System.Windows.Forms.TextBox();
             this.txtEndMile = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.ckb_sameNameWithCit = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMaxin50M)).BeginInit();
@@ -179,6 +180,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "文件列表";
             // 
+            // ckb_All_CitFiles
+            // 
+            this.ckb_All_CitFiles.AutoSize = true;
+            this.ckb_All_CitFiles.Location = new System.Drawing.Point(16, 283);
+            this.ckb_All_CitFiles.Name = "ckb_All_CitFiles";
+            this.ckb_All_CitFiles.Size = new System.Drawing.Size(54, 16);
+            this.ckb_All_CitFiles.TabIndex = 6;
+            this.ckb_All_CitFiles.Text = "全 选";
+            this.ckb_All_CitFiles.UseVisualStyleBackColor = true;
+            this.ckb_All_CitFiles.CheckedChanged += new System.EventHandler(this.ckb_All_CitFiles_CheckedChanged);
+            // 
             // pictureBoxMaxin50M
             // 
             this.pictureBoxMaxin50M.Location = new System.Drawing.Point(282, 198);
@@ -244,7 +256,7 @@
             // 
             // btn_Export
             // 
-            this.btn_Export.Location = new System.Drawing.Point(469, 640);
+            this.btn_Export.Location = new System.Drawing.Point(469, 673);
             this.btn_Export.Name = "btn_Export";
             this.btn_Export.Size = new System.Drawing.Size(75, 23);
             this.btn_Export.TabIndex = 7;
@@ -272,17 +284,6 @@
             this.ckb_all_channel.Text = "全  选";
             this.ckb_all_channel.UseVisualStyleBackColor = true;
             this.ckb_all_channel.CheckedChanged += new System.EventHandler(this.ckb_all_channel_CheckedChanged);
-            // 
-            // ckb_All_CitFiles
-            // 
-            this.ckb_All_CitFiles.AutoSize = true;
-            this.ckb_All_CitFiles.Location = new System.Drawing.Point(16, 283);
-            this.ckb_All_CitFiles.Name = "ckb_All_CitFiles";
-            this.ckb_All_CitFiles.Size = new System.Drawing.Size(54, 16);
-            this.ckb_All_CitFiles.TabIndex = 6;
-            this.ckb_All_CitFiles.Text = "全 选";
-            this.ckb_All_CitFiles.UseVisualStyleBackColor = true;
-            this.ckb_All_CitFiles.CheckedChanged += new System.EventHandler(this.ckb_All_CitFiles_CheckedChanged);
             // 
             // label1
             // 
@@ -316,11 +317,22 @@
             this.txtEndMile.Size = new System.Drawing.Size(100, 21);
             this.txtEndMile.TabIndex = 11;
             // 
+            // ckb_sameNameWithCit
+            // 
+            this.ckb_sameNameWithCit.AutoSize = true;
+            this.ckb_sameNameWithCit.Location = new System.Drawing.Point(469, 632);
+            this.ckb_sameNameWithCit.Name = "ckb_sameNameWithCit";
+            this.ckb_sameNameWithCit.Size = new System.Drawing.Size(78, 16);
+            this.ckb_sameNameWithCit.TabIndex = 12;
+            this.ckb_sameNameWithCit.Text = "与cit同名";
+            this.ckb_sameNameWithCit.UseVisualStyleBackColor = true;
+            // 
             // ExportDataBatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(896, 758);
+            this.Controls.Add(this.ckb_sameNameWithCit);
             this.Controls.Add(this.txtEndMile);
             this.Controls.Add(this.txtStartMile);
             this.Controls.Add(this.label2);
@@ -378,5 +390,6 @@
         private System.Windows.Forms.TextBox txtStartMile;
         private System.Windows.Forms.TextBox txtEndMile;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.CheckBox ckb_sameNameWithCit;
     }
 }

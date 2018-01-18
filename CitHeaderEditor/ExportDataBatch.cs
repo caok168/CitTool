@@ -250,11 +250,25 @@ namespace CitHeaderEditor
                     //使用中文名称
                     if (ckb_Chinese.Checked)
                     {
-                        ExportDataTxt(true, citSourceCheckFileNameList[j],citSourceCheckFileList[j]);
+                        if (ckb_sameNameWithCit.Checked)
+                        {
+                            ExportDataTxt(true, citSourceCheckFileList[j].Replace(".cit", ".txt"));
+                        }
+                        else
+                        {
+                            ExportDataTxt(true, citSourceCheckFileNameList[j], citSourceCheckFileList[j]);
+                        }
                     }
                     else
                     {
-                        ExportDataTxt(false, citSourceCheckFileNameList[j], citSourceCheckFileList[j]);
+                        if (ckb_sameNameWithCit.Checked)
+                        {
+                            ExportDataTxt(true, citSourceCheckFileList[j].Replace(".cit", ".txt"));
+                        }
+                        else
+                        {
+                            ExportDataTxt(false, citSourceCheckFileNameList[j], citSourceCheckFileList[j]);
+                        }
                     }
                 }
 
@@ -375,6 +389,61 @@ namespace CitHeaderEditor
                 throw;
             }
             
+            //清空缓冲区
+            sw.Flush();
+            //关闭流
+            sw.Close();
+            fs.Close();
+        }
+
+
+
+        private void ExportDataTxt(bool isChinese, string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Create);
+            StreamWriter sw = new StreamWriter(fs);
+
+            for (int i = 0; i < channelNameList.Count; i++)
+            {
+                if (isChinese)
+                    sw.Write(channelNameList[i].sNameCh + "(" + channelNameList[i].sUnit + ")");
+                else
+                    sw.Write(channelNameList[i].sNameEn + "(" + channelNameList[i].sUnit + ")");
+                if (i != channelNameList.Count - 1)
+                {
+                    sw.Write(",");
+                }
+            }
+            sw.WriteLine();
+
+            int count = 0;
+            if (dataList.Count > 0)
+                count = dataList[0].Length;
+
+            int kk = 0;
+            try
+            {
+                for (int j = 0; j < count; j++)
+                {
+                    for (int i = 0; i < dataList.Count; i++)
+                    {
+                        sw.Write(dataList[i][j]);
+                        if (i != dataList.Count - 1)
+                        {
+                            sw.Write(",");
+                        }
+                    }
+                    sw.WriteLine();
+
+                    kk = j;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
             //清空缓冲区
             sw.Flush();
             //关闭流
